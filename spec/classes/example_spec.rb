@@ -18,7 +18,7 @@ describe 'profile_nfs' do
 
           it { is_expected.to contain_class('profile_nfs') }
 
-          it { is_expected.to contain_nfs__server__export('/data_folder') }
+          it { is_expected.to contain_nfs__server__export('/mnt/nfs') }
   
 
         end
