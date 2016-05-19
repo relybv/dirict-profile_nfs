@@ -12,6 +12,6 @@ class profile_nfs
   include nfs::server
 
   ::nfs::server::export{ '/mnt/nfs':
-    clients => '10.0.0.0/16(rw,insecure,sync,root_squash,no_subtree_check) localhost(rw)',
+    clients => '10.0.0.0/16(rw,insecure,sync,root_squash,no_subtree_check)',
   }
 }
