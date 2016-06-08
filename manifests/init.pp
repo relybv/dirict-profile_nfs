@@ -16,10 +16,6 @@ class profile_nfs
     nfs_v4_export_root         => '/mnt/nfs',
   }
 
-#  exec { '/bin/mkdir /mnt/nfs /mnt/nfs/config /mnt/nfs/office-templates /mnt/nfs/errors /mnt/nfs/logs':
-#    creates => '/mnt/nfs/logs',
-#  }
-
   ::nfs::server::export{ '/mnt/nfs':
     clients => '172.16.0.0/16(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)',
   }
