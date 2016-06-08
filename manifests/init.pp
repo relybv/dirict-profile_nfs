@@ -11,6 +11,10 @@ class profile_nfs
 {
   include nfs::server
 
+  file { [ '/mnt/nfs', '/mnt/nfs/config', '/mnt/nfs/office-templates', '/mnt/nfs/errors', '/mnt/nfs/logs' ]:
+    ensure => directory,
+  }
+
   ::nfs::server::export{ '/mnt/nfs':
     clients => '172.16.0.0/16(rw,sync,no_root_squash,no_subtree_check)',
   }
