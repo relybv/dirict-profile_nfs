@@ -9,7 +9,11 @@
 #
 class profile_nfs
 {
-  include nfs::server
+  class { '::nfs':
+    server_nfsv4_servicehelper => 'nfs-common',
+    server_enabled             => true,
+    nfs_v4                     => true,
+  }
 
   exec { '/bin/mkdir /mnt/nfs /mnt/nfs/config /mnt/nfs/office-templates /mnt/nfs/errors /mnt/nfs/logs':
     creates => '/mnt/nfs/logs',
