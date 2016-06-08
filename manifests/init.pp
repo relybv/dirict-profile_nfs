@@ -13,6 +13,7 @@ class profile_nfs
     server_nfsv4_servicehelper => 'nfs-common',
     server_enabled             => true,
     nfs_v4                     => true,
+    nfs_v4_export_root         => '/mnt/nfs',
   }
 
   exec { '/bin/mkdir /mnt/nfs /mnt/nfs/config /mnt/nfs/office-templates /mnt/nfs/errors /mnt/nfs/logs':
