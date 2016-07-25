@@ -9,9 +9,7 @@
 #
 class profile_nfs
 {
-  class { '::nfs':
-    server_nfsv4_servicehelper => 'nfs-common',
-    server_enabled             => true,
+  class { '::nfs::server':
     nfs_v4                     => true,
     nfs_v4_export_root         => '/mnt/nfs',
   }

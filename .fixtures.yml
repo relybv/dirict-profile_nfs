@@ -6,6 +6,8 @@ fixtures:
     ntp: "https://github.com/puppetlabs/puppetlabs-ntp.git"
     nfs: "https://github.com/derdanne/puppet-nfs.git"
     concat: "git://github.com/puppetlabs/puppetlabs-concat.git"
+    augeasproviders_core: "git://github.com/hercules-team/augeasproviders_core.git"
+    augeasproviders_shellvar: "git://github.com/hercules-team/augeasproviders_shellvar.git"
 
   symlinks:
     profile_nfs: "#{source_dir}"
