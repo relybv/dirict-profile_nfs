@@ -10,8 +10,8 @@
 class profile_nfs
 {
   class { '::nfs::server':
-    nfs_v4                     => true,
-    nfs_v4_export_root         => '/mnt/nfs',
+    nfs_v4             => true,
+    nfs_v4_export_root => '/mnt/nfs',
   }
 
   ::nfs::server::export{ '/mnt/nfs':
