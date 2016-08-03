@@ -15,19 +15,19 @@ class profile_nfs
   }
 
   ::nfs::server::export{ '/mnt/nfs':
-    clients => '172.16.0.0/16(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)',
+    clients => '172.18.0.0/16(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)',
   }
   ::nfs::server::export{ '/mnt/nfs/config':
-    clients => '172.16.0.0/16(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)',
+    clients => '172.18.0.0/16(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)',
   }
   ::nfs::server::export{ '/mnt/nfs/office-templates':
-    clients => '172.16.0.0/16(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)',
+    clients => '172.18.0.0/16(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)',
   }
   ::nfs::server::export{ '/mnt/nfs/errors':
-    clients => '172.16.0.0/16(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)',
+    clients => '172.18.0.0/16(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)',
   }
   ::nfs::server::export{ '/mnt/nfs/logs':
-    clients => '172.16.0.0/16(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)',
+    clients => '172.18.0.0/16(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)',
   }
 
 }
