@@ -3,6 +3,9 @@
 # This class is meant to be called from profile_nfs.
 # It sets variables according to platform.
 #
+
+$db_export_net = $::db_export_net
+
 class profile_nfs::params {
   case $::osfamily {
     'Debian': {
