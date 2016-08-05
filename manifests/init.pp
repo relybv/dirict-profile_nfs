@@ -10,7 +10,7 @@
 
 
 class profile_nfs(
-    $export_net = $::profile_nfs::params::export_net
+    $export_net = $::profile_nfs::params::db_export_net
   )
 {
   class { '::nfs::server':
