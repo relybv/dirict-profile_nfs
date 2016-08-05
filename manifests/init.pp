@@ -10,7 +10,7 @@
 
 
 class profile_nfs(
-    $export_net = $::profile_nfs::params::db_export_net
+    $db_export_net = $::profile_nfs::params::db_export_net
   ) inherits ::profile_nfs::params {
 
   class { '::nfs::server':
@@ -19,19 +19,19 @@ class profile_nfs(
   }
 
   ::nfs::server::export{ '/mnt/nfs':
-    clients => "${export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
+    clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
   }
   ::nfs::server::export{ '/mnt/nfs/config':
-    clients => "${export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
+    clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
   }
   ::nfs::server::export{ '/mnt/nfs/office-templates':
-    clients => "${export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
+    clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
   }
   ::nfs::server::export{ '/mnt/nfs/errors':
-    clients => "${export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
+    clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
   }
   ::nfs::server::export{ '/mnt/nfs/logs':
-    clients => "${export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
+    clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
   }
 
 }

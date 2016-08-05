@@ -9,7 +9,6 @@
 class profile_nfs::params {
   $db_export_net = $::db_export_net
 
-notify("Dit is facter: $::db_export_net")
   case $::osfamily {
     'Debian': {
       $package_name = 'profile_nfs'
