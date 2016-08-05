@@ -4,9 +4,12 @@
 # It sets variables according to platform.
 #
 
-$db_export_net = $::db_export_net
+
 
 class profile_nfs::params {
+  $export_net = $::db_export_net
+#   $ext_lb_fqdn = $::ext_lb_fqdn
+
   case $::osfamily {
     'Debian': {
       $package_name = 'profile_nfs'
