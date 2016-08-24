@@ -23,10 +23,7 @@ describe 'profile_nfs class' do
       end
     end
 
-
-  
-# a profile class should test if the included packages and services are installed, enabled and running. Please adept to your needs. See examples below:
-   describe package('nfs-kernel-server') do
+    describe package('nfs-kernel-server') do
       it { is_expected.to be_installed }
     end
 
@@ -37,6 +34,32 @@ describe 'profile_nfs class' do
 
     describe port(2049) do
       it { should be_listening.with('tcp') }
+      it { should be_listening.with('udp') }
+    end
+
+    describe port(111) do
+      it { should be_listening.with('tcp') }
+      it { should be_listening.with('udp') }
+    end
+
+    describe file('/mnt/nfs') do
+      it { should be_directory }
+    end
+
+    describe file('/mnt/nfs/office-templates') do
+      it { should be_directory }
+    end
+
+    describe file('/mnt/nfs/config') do
+      it { should be_directory }
+    end
+
+    describe file('/mnt/nfs/errors') do
+      it { should be_directory }
+    end
+
+    describe file('/mnt/nfs/logs') do
+      it { should be_directory }
     end
 
   end
