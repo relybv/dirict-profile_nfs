@@ -6,6 +6,7 @@ describe 'profile_nfs' do
       context "on #{os}" do
         let(:facts) do
           facts.merge({
+            :db_export_net => "localhost",
             :concat_basedir => "/foo"
           })
         end

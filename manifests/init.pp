@@ -13,7 +13,8 @@ class profile_nfs(
     $db_export_net = $::profile_nfs::params::db_export_net
   ) inherits ::profile_nfs::params {
 
-  class { '::nfs::server':
+  class { '::nfs':
+    server_enabled     => true,
     nfs_v4             => true,
     nfs_v4_export_root => '/mnt/nfs',
   }
