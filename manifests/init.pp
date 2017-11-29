@@ -18,15 +18,38 @@ class profile_nfs(
     nfs_v4             => true,
     nfs_v4_export_root => '/mnt/nfs',
   }
-  file { '/mnt/nfs':
-    ensure => directory,
-  }
   file { '/mnt/nfs/config':
     ensure  => directory,
-    require => File['/mnt/nfs],
+    require => File['/mnt/nfs'],
   }
+  file { '/mnt/nfs/office-templates':
+    ensure  => directory,
+    require => File['/mnt/nfs'],
+  }
+  file { '/mnt/nfs/errors':
+    ensure  => directory,
+    require => File['/mnt/nfs'],
+  }
+  file { '/mnt/nfs/logs':
+    ensure  => directory,
+    require => File['/mnt/nfs'],
+  }
+  file { '/mnt/nfs/data':
+    ensure  => directory,
+    require => File['/mnt/nfs'],
+  }
+  file { '/mnt/nfs/data/cache':
+    ensure  => directory,
+    require => File['/mnt/nfs/data'],
+  }
+  file { '/mnt/nfs/data/tmp':
+    ensure  => directory,
+    require => File['/mnt/nfs/data'],
+  }
+
   ::nfs::server::export{ '/mnt/nfs':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
+    require => File['/mnt/nfs'],
   }
   ::nfs::server::export{ '/mnt/nfs/config':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
@@ -34,18 +57,23 @@ class profile_nfs(
   }
   ::nfs::server::export{ '/mnt/nfs/office-templates':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
+    require => File['/mnt/nfs/office-templates'],
   }
   ::nfs::server::export{ '/mnt/nfs/errors':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
+    require => File['/mnt/nfs/errors'],
   }
   ::nfs::server::export{ '/mnt/nfs/logs':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
+    require => File['/mnt/nfs/logs'],
   }
   ::nfs::server::export{ '/mnt/nfs/data/cache':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
+    require => File['/mnt/nfs/data/cache'],
   }
   ::nfs::server::export{ '/mnt/nfs/data/tmp':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
+    require => File['/mnt/nfs/data/tmp'],
   }
 
 }
