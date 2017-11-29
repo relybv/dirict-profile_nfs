@@ -18,8 +18,18 @@ describe 'profile_nfs' do
           it { is_expected.to contain_class('profile_nfs') }
           it { is_expected.to contain_class('profile_nfs::params') }
 
+          it { is_expected.to contain_file('/mnt/nfs/config') }
+          it { is_expected.to contain_file('/mnt/nfs/data') }
+          it { is_expected.to contain_file('/mnt/nfs/data/cache') }
+          it { is_expected.to contain_file('/mnt/nfs/data/tmp') }
+          it { is_expected.to contain_file('/mnt/nfs/errors') }
+          it { is_expected.to contain_file('/mnt/nfs/logs') }
+          it { is_expected.to contain_file('/mnt/nfs/office-templates') }
+
           it { is_expected.to contain_nfs__server__export('/mnt/nfs') }
           it { is_expected.to contain_nfs__server__export('/mnt/nfs/config') }
+          it { is_expected.to contain_nfs__server__export('/mnt/nfs/data/cache') }
+          it { is_expected.to contain_nfs__server__export('/mnt/nfs/data/tmp') }
           it { is_expected.to contain_nfs__server__export('/mnt/nfs/errors') }
           it { is_expected.to contain_nfs__server__export('/mnt/nfs/logs') }
           it { is_expected.to contain_nfs__server__export('/mnt/nfs/office-templates') }
