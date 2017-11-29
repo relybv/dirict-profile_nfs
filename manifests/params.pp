@@ -7,7 +7,11 @@
 
 
 class profile_nfs::params {
-  $db_export_net = $::db_export_net
+  if $::db_export_net != undef {
+    $db_export_net = $::db_export_net
+  } else {
+    $db_export_net = '0.0.0.0/0'
+  }
 
   case $::osfamily {
     'Debian': {

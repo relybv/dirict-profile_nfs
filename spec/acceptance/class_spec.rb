@@ -62,5 +62,18 @@ describe 'profile_nfs class' do
       it { should be_directory }
     end
 
+    describe file('/mnt/nfs/data') do
+      it { should be_directory }
+    end
+
+    describe file('/mnt/nfs/data/cache') do
+      it { should be_directory }
+    end
+
+    describe file('/mnt/nfs/data/tmp') do
+      it { should be_directory }
+    end
+
+
   end
 end

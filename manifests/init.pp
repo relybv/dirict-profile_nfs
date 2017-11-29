@@ -7,12 +7,11 @@
 # [*sample_parameter*]
 #   Explanation of what this parameter affects and what it defaults to.
 
-
-
 class profile_nfs(
     $db_export_net = $::profile_nfs::params::db_export_net
   ) inherits ::profile_nfs::params {
 
+  notice("Running with db_export_net ${db_export_net}")
   class { '::nfs':
     server_enabled     => true,
     nfs_v4             => true,
