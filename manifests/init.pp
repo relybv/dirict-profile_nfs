@@ -18,9 +18,12 @@ class profile_nfs(
     nfs_v4             => true,
     nfs_v4_export_root => '/mnt/nfs',
   }
-
-  file { '/mnt/nfs/config':
+  file { '/mnt/nfs':
     ensure => directory,
+  }
+  file { '/mnt/nfs/config':
+    ensure  => directory,
+    require => File['/mnt/nfs],
   }
   ::nfs::server::export{ '/mnt/nfs':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
