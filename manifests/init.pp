@@ -20,7 +20,7 @@ class profile_nfs(
     server_enabled     => true,
     nfs_v4             => true,
     nfs_v4_export_root => '/mnt/nfs',
-    require            => File['/mnt/nfs/data'],
+    require            => Nfs::Server::Export['/mnt/nfs/data/tmp'],
   }
   file { '/mnt/nfs/config':
     ensure  => directory,
