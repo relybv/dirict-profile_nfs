@@ -20,35 +20,35 @@ class profile_nfs(
     server_enabled     => true,
     nfs_v4             => true,
     nfs_v4_export_root => '/mnt/nfs',
-    require            => Exec['prep_dirs'],
+    require            => File['/mnt/nfs/data'],
   }
   file { '/mnt/nfs/config':
     ensure  => directory,
-    require => File['/mnt/nfs'],
+    require => Exec['prep_dirs'],
   }
   file { '/mnt/nfs/office-templates':
     ensure  => directory,
-    require => File['/mnt/nfs'],
+    require => Exec['prep_dirs'],
   }
   file { '/mnt/nfs/errors':
     ensure  => directory,
-    require => File['/mnt/nfs'],
+    require => Exec['prep_dirs'],
   }
   file { '/mnt/nfs/logs':
     ensure  => directory,
-    require => File['/mnt/nfs'],
+    require => Exec['prep_dirs'],
   }
   file { '/mnt/nfs/data':
     ensure  => directory,
-    require => File['/mnt/nfs'],
+    require => Exec['prep_dirs'],
   }
   file { '/mnt/nfs/data/cache':
     ensure  => directory,
-    require => File['/mnt/nfs/data'],
+    require => Exec['prep_dirs'],
   }
   file { '/mnt/nfs/data/tmp':
     ensure  => directory,
-    require => File['/mnt/nfs/data'],
+    require => Exec['prep_dirs'],
   }
 
   ::nfs::server::export{ '/mnt/nfs':
