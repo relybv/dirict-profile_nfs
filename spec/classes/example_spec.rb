@@ -26,6 +26,8 @@ describe 'profile_nfs' do
           it { is_expected.to contain_file('/mnt/nfs/logs') }
           it { is_expected.to contain_file('/mnt/nfs/office-templates') }
 
+          it { is_expected.to contain_exec('prep_dirs') }
+
           it { is_expected.to contain_nfs__server__export('/mnt/nfs') }
           it { is_expected.to contain_nfs__server__export('/mnt/nfs/config') }
           it { is_expected.to contain_nfs__server__export('/mnt/nfs/data/cache') }

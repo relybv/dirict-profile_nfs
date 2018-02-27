@@ -12,10 +12,15 @@ class profile_nfs(
   ) inherits ::profile_nfs::params {
 
   notice("Running with db_export_net ${db_export_net}")
+
+  exec { 'prep_dirs':
+    command => '/bin/mkdir -p /mnt/nfs/config /mnt/nfs/office-templates /mnt/nfs/errors /mnt/nfs/logs /mnt/nfs/data /mnt/nfs/data/cache /mnt/nfs/data/tmp',
+  }
   class { '::nfs':
     server_enabled     => true,
     nfs_v4             => true,
     nfs_v4_export_root => '/mnt/nfs',
+    require            => Exec['prep_dirs'],
   }
   file { '/mnt/nfs/config':
     ensure  => directory,
