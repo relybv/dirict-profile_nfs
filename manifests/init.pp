@@ -20,7 +20,6 @@ class profile_nfs(
     server_enabled     => true,
     nfs_v4             => true,
     nfs_v4_export_root => '/mnt/nfs',
-    require            => Nfs::Server::Export['/mnt/nfs/data/tmp'],
   }
   file { '/mnt/nfs/config':
     ensure  => directory,
@@ -54,30 +53,37 @@ class profile_nfs(
   ::nfs::server::export{ '/mnt/nfs':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
     require => File['/mnt/nfs'],
+    before  => Class[::nfs],
   }
   ::nfs::server::export{ '/mnt/nfs/config':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
     require => File['/mnt/nfs/config'],
+    before  => Class[::nfs],
   }
   ::nfs::server::export{ '/mnt/nfs/office-templates':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
     require => File['/mnt/nfs/office-templates'],
+    before  => Class[::nfs],
   }
   ::nfs::server::export{ '/mnt/nfs/errors':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
     require => File['/mnt/nfs/errors'],
+    before  => Class[::nfs],
   }
   ::nfs::server::export{ '/mnt/nfs/logs':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
     require => File['/mnt/nfs/logs'],
+    before  => Class[::nfs],
   }
   ::nfs::server::export{ '/mnt/nfs/data/cache':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
     require => File['/mnt/nfs/data/cache'],
+    before  => Class[::nfs],
   }
   ::nfs::server::export{ '/mnt/nfs/data/tmp':
     clients => "${db_export_net}(rw,sync,no_root_squash,no_subtree_check) localhost(rw,sync,no_root_squash,no_subtree_check)",
     require => File['/mnt/nfs/data/tmp'],
+    before  => Class[::nfs],
   }
 
 }
